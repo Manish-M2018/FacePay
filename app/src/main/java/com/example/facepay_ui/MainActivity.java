@@ -10,7 +10,8 @@ import com.alimuzaffar.lib.pin.PinEntryEditText;
 import com.kofigyan.stateprogressbar.StateProgressBar;
 
 public class MainActivity extends AppCompatActivity {
-    String[] descriptionData = {"Unique Pin", "Fingerprint", "Face"};
+
+    String[] descriptionData = {"Mobile","Unique Pin", "Fingerprint", "Face"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

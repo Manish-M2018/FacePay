@@ -26,6 +26,7 @@ public class Payment extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(Payment.this,"Payment was successful!",Toast.LENGTH_SHORT).show();
                 amount.setText("");
+                startActivity(new Intent(Payment.this,Transaction_complete.class));
             }
         });
 
