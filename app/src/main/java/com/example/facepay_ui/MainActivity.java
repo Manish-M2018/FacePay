@@ -1,5 +1,6 @@
 package com.example.facepay_ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
                 public void onPinEntered(CharSequence str) {
                     if (str.toString().equals("1234")) {
                         Toast.makeText(MainActivity.this, "SUCCESS", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(MainActivity.this, Fingerprint.class);
+                        startActivity(i);
                     } else {
                         Toast.makeText(MainActivity.this, "FAIL", Toast.LENGTH_SHORT).show();
                         pinEntry.setText(null);

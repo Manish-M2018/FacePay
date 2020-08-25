@@ -26,7 +26,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.kofigyan.stateprogressbar:stateprogressbar:1.0.0'
-    implementation ('com.alimuzaffar.lib:pinentryedittext:2.0.6') {
+    implementation('com.alimuzaffar.lib:pinentryedittext:2.0.6') {
         // Exclude is only needed if you already have
         // androidx.appcompat as a dependency in your app.
         exclude group: 'androidx.appcompat', module: 'appcompat'

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FacePay</string>
+    <string-array name="dealers">
+        <item>PVR Cinemas, Orion Mall</item>
+        <item>Samsung showroom, Mantri Square</item>
+        <item>Desi Chats, Orion Mall</item>
+        <item>Burger King, Garuda Swagath Mall</item>
+        <item>Levi\'s Co., Central Mall</item>
+    </string-array>
 </resources>
