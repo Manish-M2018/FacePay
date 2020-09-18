@@ -9,13 +9,35 @@ from werkzeug.utils import secure_filename
 app =Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
-myclient = pymongo.MongoClient("mongodb+srv://kds:<password>@cluster0-e1dhw.mongodb.net/results?retryWrites=true&w=majority")
+myclient = pymongo.MongoClient("mongodb+srv://kds:Password123@cluster0-e1dhw.mongodb.net/facepay?retryWrites=true&w=majority")
 mydb =myclient['facepay']
-mycol=mydb['users']
+
 
 @app.route("/")
 def index():
-    return "hey"
+    return "app working"
+
+@app.route("/register",methods = ['POST'])
+def register():
+    ret_obj={}
+    mycol=mydb['users']
+    eml=request.form.get('email_id')
+    pwd=request.form.get('password')
+    myquery = { "email_id": eml }
+    mydoc = mycol.find(myquery)
+    exists=[x for x in mydoc]
+
+    if len(exists)!=0:
+        ret_obj['success']=False
+    else:
+        mydict={
+            "email_id":eml,
+            "password":pwd,
+            "balance":0,
+        }
+        mycol.insert_one(mydict)
+        ret_obj['success']=True
+    return ret_obj
 
 
 if __name__=="__main__":
