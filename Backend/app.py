@@ -23,6 +23,8 @@ def register():
     mycol=mydb['users']
     eml=request.form.get('email_id')
     pwd=request.form.get('password')
+    phash=hashlib.md5(pwd.encode())
+    phash=phash.hexdigest()
     myquery = { "email_id": eml }
     mydoc = mycol.find(myquery)
     exists=[x for x in mydoc]
@@ -32,7 +34,7 @@ def register():
     else:
         mydict={
             "email_id":eml,
-            "password":pwd,
+            "password":phash,
             "balance":0,
         }
         mycol.insert_one(mydict)
