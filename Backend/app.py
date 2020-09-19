@@ -41,6 +41,21 @@ def register():
         ret_obj['success']=True
     return ret_obj
 
+@app.route("/login",methods = ['POST'])
+def login():
+    ret_obj={}
+    ret_obj['success']=False
+    email = request.form['email_id']
+    psw = request.form['password']
+    phash=hashlib.md5(psw.encode())
+    phash=phash.hexdigest()
+    mycol=mydb['users']
+    user = mycol.find_one({'email_id':email})
+    if user['email_id']==email and user['password']==phash:
+        ret_obj['balance']=0
+        ret_obj['success']=True
+
+    return ret_obj
 
 if __name__=="__main__":
     app.run(debug=True,threaded=False)
