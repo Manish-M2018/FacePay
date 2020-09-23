@@ -57,5 +57,42 @@ def login():
 
     return ret_obj
 
+@app.route("/pay",methods = ['POST'])
+def pay():
+    ret_obj={}
+    ret_obj['success']=False
+    from_email = request.form['from_email_id']
+    to_email = request.form['to_email_id']
+    amt=float(request.form['amount'])
+    mycol=mydb['users']
+    from_user = mycol.find_one({'email_id':from_email})
+    if float(from_user['balance'])< amt:
+        ret_obj['message']="Insufficient Balance"
+    
+    else:
+        # add amt to_user
+        to_user=mycol.find_one({'email_id':to_email})
+        newbalance=float(to_user['balance'])+amt
+        newvalues = { "$set": { "balance": newbalance } }
+        mycol.update_one(to_user, newvalues)
+        ret_obj['to_newbalance']=newbalance
+        #subract amt from_user 
+        newbalance=float(from_user['balance'])-amt
+        newvalues = { "$set": { "balance": newbalance } }
+        mycol.update_one(from_user, newvalues)
+        ret_obj['from_newbalance']=newbalance
+        # add it to transactions
+        mycol=mydb['transactions']
+        mydict={
+            "from_email":from_email,
+            "to_email":to_email,
+            "amount":amt
+        }
+        mycol.insert_one(mydict)
+
+        ret_obj['success']=True
+
+    return ret_obj
+
 if __name__=="__main__":
     app.run(debug=True,threaded=False)
