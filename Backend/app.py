@@ -57,6 +57,29 @@ def login():
 
     return ret_obj
 
+@app.route("/add_amount",methods = ['POST'])
+def add_amount():
+    ret_obj={}
+    ret_obj['success']=False
+    mycol=mydb['users']
+    eml=request.form.get('email_id')
+    user = mycol.find_one({ "email_id": eml })
+    amt=float(request.form['amount'])
+
+    newbalance=float(user['balance'])+amt
+    newvalues = { "$set": { "balance": newbalance } }
+    mycol.update_one(user, newvalues)
+    ret_obj['newbalance']=newbalance
+    mycol=mydb['transactions']
+    mydict={
+        "email_id":eml,
+        "amount":amt
+    }
+    mycol.insert_one(mydict)
+    ret_obj['success']=True
+
+    return ret_obj
+
 @app.route("/pay",methods = ['POST'])
 def pay():
     ret_obj={}
