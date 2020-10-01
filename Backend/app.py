@@ -25,6 +25,7 @@ def register():
     pwd=request.form.get('password')
     phash=hashlib.md5(pwd.encode())
     phash=phash.hexdigest()
+    
     myquery = { "email_id": eml }
     mydoc = mycol.find(myquery)
     exists=[x for x in mydoc]
@@ -32,10 +33,16 @@ def register():
     if len(exists)!=0:
         ret_obj['success']=False
     else:
+        
+        file = request.files['file']
+        filename = secure_filename(file.filename)
+        filename="faces/"+eml.split("@")[0] +"."+filename.split(".")[1]
+        file.save(filename)
         mydict={
             "email_id":eml,
             "password":phash,
             "balance":0,
+            "filename":filename
         }
         mycol.insert_one(mydict)
         ret_obj['success']=True
