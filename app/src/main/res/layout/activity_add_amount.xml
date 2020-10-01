@@ -6,29 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/back1"
-    tools:context=".LoginActivity">
+    tools:context=".AddAmount">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textColor="#000"
-        android:textSize="21sp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:layout_marginTop="50dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:text="@string/email"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#000"
-        android:textSize="21sp"
-        android:textStyle="bold" />
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="50dp"
+    android:text="@string/email"
+    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+    android:textColor="#000"
+    android:textSize="21sp"
+    android:textStyle="bold" />
 
     <EditText
         android:id="@+id/et_email"
@@ -45,24 +34,24 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/psw"
         android:layout_gravity="center"
-        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:text="@string/amount_to_add"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#000"
         android:textSize="21sp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:layout_marginTop="50dp"/>
+        android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/et_psw"
+        android:id="@+id/et_amount"
         android:layout_width="285dp"
         android:layout_height="39dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/rectangle"
         android:layout_gravity="center"
         android:ems="10"
-        android:hint="@string/psw_hint"
-        android:inputType="textPassword"
+        android:hint="@string/amount"
+        android:inputType="number"
         android:padding="10dp"/>
 
     <Button
@@ -75,15 +64,5 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/design1"/>
 
-    <TextView
-        android:id="@+id/moveToRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginTop="15dp"
-        android:text="@string/dont_have_an_account"
-        android:textStyle="bold"
-        android:textSize="15sp"/>
 
 </LinearLayout>

@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Payment extends AppCompatActivity {
 
     private EditText amountToPay;
+    private TextView addAmountToWallet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,9 @@ public class Payment extends AppCompatActivity {
         Button submit = findViewById(R.id.submit);
 
         amountToPay = findViewById(R.id.amount);
+
+        addAmountToWallet = (TextView) findViewById(R.id.add_amount);
+
 
         amountToPay.requestFocus();
 
@@ -37,6 +42,12 @@ public class Payment extends AppCompatActivity {
             }
         });
 
+        addAmountToWallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Payment.this,AddAmount.class));
+            }
+        });
 
 
     }
