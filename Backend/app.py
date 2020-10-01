@@ -1,6 +1,8 @@
 from flask import Flask,request,jsonify
 import hashlib
 import os
+import face_recognition as fr
+import cv2
 import numpy as np
 import pandas as pd
 import tensorflow as tf
@@ -40,7 +42,7 @@ def register():
         file.save(filename)
         mydict={
             "email_id":eml,
-            "password":phash,
+            "password":phash,=
             "balance":0,
             "filename":filename
         }
@@ -123,6 +125,17 @@ def pay():
         ret_obj['success']=True
 
     return ret_obj
+
+@app.route("/compare_faces",methods = ['POST'])
+def compare_face():
+    ret_obj={}
+    ret_obj['success']=False
+    known_url = request.form['known_url']
+    known_face = fr.load_image_file(known_url)
+    unknown_face=fr.load_image_file(unknown_url)
+    known_encoding = fr.face_encodings(known_face)[0]
+    unknown_encoding = fr.face_encodings(unknown_face)[0]
+    ans= fr.compare_faces(known_encoding,unknown_encoding,tolerance=.5)
 
 if __name__=="__main__":
     app.run(debug=True,threaded=False)
