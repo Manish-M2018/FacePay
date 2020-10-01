@@ -7,4 +7,17 @@
         <item>HDFC</item>
         <item>Canara Bank</item>
     </string-array>
+
+    <string name="login">Login to your account</string>
+    <string name="email">Email</string>
+    <string name="email_hint">Enter your email address</string>
+    <string name="psw">Password</string>
+    <string name="psw_hint">Enter your password</string>
+    <string name="submit">Submit</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+
+    <string name="register">Register with your details</string>
+    <string name="face_img">Face image</string>
+    <string name="already_have_an_account">Already have an account?</string>
+
 </resources>
