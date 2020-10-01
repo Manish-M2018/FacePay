@@ -20,4 +20,8 @@
     <string name="face_img">Face image</string>
     <string name="already_have_an_account">Already have an account?</string>
 
+    <string name="amount_to_add">Amount to add</string>
+    <string name="add_amount">Add Amount to your account</string>
+    <string name="amount">Enter the amount</string>
+
 </resources>
